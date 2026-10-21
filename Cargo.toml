@@ -4,3 +4,48 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+
+# Web framework & réseau
+axum = { version = "0.7", features = ["macros"] }
+tokio = { version = "1.54", features = ["full"] }
+tower = { version = "0.4", features = ["util"] }
+tower-http = { version = "0.5", features = ["cors", "trace", "fs"] }
+
+# Base de données (PostgreSQL par exemple, remplaçable par sqlite ou mysql)
+sea-orm = { version = "2.0.4", features = ["sqlx-postgres", "runtime-tokio-native-tls"] }
+
+# Sérialisation & Formats
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+uuid = { version = "1.28", features = ["v4", "serde"] }
+chrono = { version = "0.4", features = ["serde"] }
+
+# Authentification & Sécurité
+jsonwebtoken = "9.3"
+argon2 = "0.5"
+
+# Configuration, Logs & Tracing
+dotenvy = "0.15"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# --- GESTION D'ERREURS ---
+# thiserror : pour définir des types d'erreurs typés et structurés (domain/internal errors)
+thiserror = "1.0"
+# anyhow : idéal pour propager facilement des erreurs génériques dans l'app
+anyhow = "1.0"
+
+
+[dev-dependencies]
+# --- TESTS UNITAIRES & INTÉGRATION ---
+# assertions expressives et lisibles (assert_that!(x, ...))
+claims = "0.7"
+pretty_assertions = "1.4"
+# Tests paramétrés (data-driven testing)
+rstest = "0.21"
+# Mocking (génération de mocks via traits)
+mockall = "0.13"
+# Property-based testing (trouve automatiquement les cas limites)
+proptest = "1.12"
+# Client HTTP pour tester les routes en boîte noire
+reqwest = { version = "0.12", features = ["json"] }
