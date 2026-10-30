@@ -3,13 +3,21 @@ name = "BackAppCard"
 version = "0.1.0"
 edition = "2024"
 
+[workspace]
+members = [".", "migration"]
+
+
+
+
+
 [dependencies]
 
+migration = { path = "migration" }
+
 # Web framework & réseau
-axum = { version = "0.7", features = ["macros"] }
+axum = { version = "0.8.9", features = ["macros"] }
 tokio = { version = "1.54", features = ["full"] }
-tower = { version = "0.4", features = ["util"] }
-tower-http = { version = "0.5", features = ["cors", "trace", "fs"] }
+
 
 # Base de données (PostgreSQL par exemple, remplaçable par sqlite ou mysql)
 sea-orm = { version = "2.0.4", features = ["sqlx-postgres", "runtime-tokio-native-tls"] }
