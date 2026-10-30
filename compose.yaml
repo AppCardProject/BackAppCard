@@ -13,3 +13,5 @@ services:
       interval: 5s
       timeout: 1s
 
+volumes:
+  postgres_data:
