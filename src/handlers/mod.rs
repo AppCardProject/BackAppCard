@@ -1,3 +1,3 @@
 
 pub mod handler;
-mod query;
+pub mod query;
