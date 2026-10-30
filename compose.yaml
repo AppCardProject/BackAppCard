@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:16
+    command: ["postgres", "-c", "log_statement=all"]
+    environment:
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "${BIND_IP:-127.0.0.1}:15432:5432"
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 5s
+      timeout: 1s
+
