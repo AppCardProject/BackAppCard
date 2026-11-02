@@ -6,7 +6,7 @@ use serde::Deserialize;
 use crate::entity::cards::Model;
 use crate::entity::prelude::Cards;
 use crate::handlers::query::Query;
-use crate::routes::global::AppState;
+use crate::routes::global_routeur::AppState;
 
 
 

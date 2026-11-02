@@ -2,6 +2,7 @@ use crate::routes::card_route::card_routes;
 use axum::Router;
 use sea_orm::DatabaseConnection;
 use std::env;
+use dotenvy::dotenv;
 
 #[derive(Clone)]
 pub struct AppState {
@@ -9,8 +10,10 @@ pub struct AppState {
 }
 
 pub async fn start() {
-    let db_url = "postgres://postgres:password@127.0.0.1:15432/postgres";
-    let db_con = sea_orm::Database::connect(db_url).await.expect("BDD (anne) pas la");
+    dotenv().ok();
+
+    let db_url = env::var("DATABASE_URL").expect("DATABASE_URL not define in .env");
+    let db_con = sea_orm::Database::connect(db_url).await.expect("BDD connexion failed");
 
     let state = AppState{db_con};
 

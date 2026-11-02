@@ -4,7 +4,7 @@ mod routes;
 mod entity;
 
 use crate::{
-    routes::global::start
+    routes::global_routeur::start
 };
 
 #[tokio::main]
