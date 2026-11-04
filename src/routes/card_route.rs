@@ -20,8 +20,10 @@ pub struct CreateInputCard {
 
 
 async fn list_all_cards(state: State<AppState>) -> Result<Json<Vec<Model>>,StatusCode> {
+
     Ok(Json(Query::fetch_all_cards(&state.db_con).await.expect("FUCKKKKK")))
 }
+
 
 async fn get_card_by_title(title : Path<String>){
 
